@@ -1,6 +1,7 @@
 %% Flow on Mars 4 - Transport Q (1 Q equal for Mars and Earth)
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Date: 2022-04-07
+% Last update: 2023-02-13
+% Created in Matlab version: R2022b
 
 %% Initialize
 clear variables

@@ -1,6 +1,7 @@
 %% Flow on Mars 6 - Sediment mixture flux
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Date: 2021-11-29
+% Last update: 2023-02-13
+% Created in Matlab version: R2022b
 
 %% Initialize
 clear variables
@@ -12,13 +13,13 @@ addpath(genpath('Checkout'));
 
 %% Input parameters
 for a = 1
-    Q = 500:500:15000; %[m3/s] Discharge
-    Qselect = [4];
+    Q = 2000; %500:500:15000; %[m3/s] Discharge
+    %Qselect = 4;
     W = 200; %[m] Channel width
     grav = 1:0.25:12; %[m/s2] Gravitational acceleration
     gselect = [12 36];
-    S = logspace(-4,-2,27);
-    Sselect = 14; %[m/m] Slope
+    S = 0.001; %logspace(-4,-2,27);
+    %Sselect = 14; %[m/m] Slope
     TC = 4; %[degrees C] Temperature
     rho = 1000; %[kg/m3] Water density
     
@@ -190,6 +191,7 @@ for d = 1:LD
     end
 end
 clear acc Rest_ini ust_ini tau_ini shieldini Pt B uy_ust ub_ust uprmsb_ub uprmsb_ust K shield1 minimise phi n d g
+
 %% get 1 value for shield_cr
 % for i = 1:LQ
 %     for g = 1:Lg
@@ -230,6 +232,7 @@ for i = 1:LQ
         end
     end
 end
+
 %% Suspended transport
 tic
 for i = 1:LQ
@@ -275,14 +278,14 @@ for a = 1
         for g = 1:Lg
             for j = 1:LS
                 qb_E50_frac(g,:,i,j) = qb_E50(g,:,i,j).*bins_y_perc/100;
-                qb_FB_frac(g,:,i,j) = qb_FB(g,:,i,j).*bins_y_perc/100;
-                qb_EF_frac(g,:,i,j) = qb_EF(g,:,i,j).*bins_y_perc/100;
-                qb_vR_frac(g,:,i,j) = qb_vR(g,:,i,j).*bins_y_perc/100;
+                %qb_FB_frac(g,:,i,j) = qb_FB(g,:,i,j).*bins_y_perc/100;
+                %qb_EF_frac(g,:,i,j) = qb_EF(g,:,i,j).*bins_y_perc/100;
+                %qb_vR_frac(g,:,i,j) = qb_vR(g,:,i,j).*bins_y_perc/100;
                 qs_E50_frac(g,:,i,j) = qs_E50(g,:,i,j).*bins_y_perc/100;
-                qs_dL_frac(g,:,i,j) = qs_dL(g,:,i,j).*bins_y_perc/100;
-                qs_EF_frac(g,:,i,j) = qs_EF(g,:,i,j).*bins_y_perc/100;
-                qs_vR_frac(g,:,i,j) = qs_vR(g,:,i,j).*bins_y_perc/100;
-                qt_EH_frac(g,:,i,j) = qb_EH(g,:,i,j).*bins_y_perc/100;
+                %qs_dL_frac(g,:,i,j) = qs_dL(g,:,i,j).*bins_y_perc/100;
+                %qs_EF_frac(g,:,i,j) = qs_EF(g,:,i,j).*bins_y_perc/100;
+                %qs_vR_frac(g,:,i,j) = qs_vR(g,:,i,j).*bins_y_perc/100;
+                %qt_EH_frac(g,:,i,j) = qb_EH(g,:,i,j).*bins_y_perc/100;
             end
         end
     end
@@ -348,7 +351,7 @@ for a = 1
     plot([3.75 3.75],[10^-1 10^4],':','color',clr1(1,:),'linewidth',pl.line)
     plot([8.87 8.87],[10^-1 10^4],':','color',[0.298 0.2 0],'linewidth',pl.line)
     plot([9.81 9.81],[10^-1 10^4],':','color',clr1(end,:),'linewidth',pl.line)
-    plot(grav,qt_E50_sum(:,:,Qselect,Sselect)*W,'-','color',[0 0 0],'linewidth',pl.line)
+    plot(grav,qt_E50_sum(:,:)*W,'-','color',[0 0 0],'linewidth',pl.line)
 %     plot(grav,qt_EF_sum(:,:,Qselect,Sselect),'--','color',[0 0 0],'linewidth',pl.line)
 %     plot(grav,qt_dL_sum(:,:,Qselect,Sselect),'-.','color',[0 0 0],'linewidth',pl.line)
 %     plot(grav,qt_vR_sum(:,:,Qselect,Sselect),':','color',[0 0 0],'linewidth',pl.line)
@@ -369,10 +372,10 @@ for a = 1
     s1(2) = axes('Position',[pl.lmarge+pl.wt+pl.inth 1-pl.tmarge-pl.ht pl.wt pl.ht]);
     hold on
     g = gselect(1);
-    plot(D50,qt_E50_frac(g,:,Qselect,Sselect)/qt_E50_sum(g,:,Qselect,Sselect)*100,'-','color',clr1(1,:),'linewidth',pl.line);
+    plot(D50,qt_E50_frac(g,:)/qt_E50_sum(g,:)*100,'-','color',clr1(1,:),'linewidth',pl.line);
     g = gselect(2);
-    plot(D50,qt_E50_frac(g,:,Qselect,Sselect)/qt_E50_sum(g,:,Qselect,Sselect)*100,'-','color',clr1(end,:),'linewidth',pl.line);
-    g = gselect(1);
+    plot(D50,qt_E50_frac(g,:)/qt_E50_sum(g,:)*100,'-','color',clr1(end,:),'linewidth',pl.line);
+%     g = gselect(1);
 %     plot(D50,qt_EF_frac(g,:,Qselect,Sselect)/qt_EF_sum(g,:,Qselect,Sselect)*100,'--','color',clr1(1,:),'linewidth',pl.line);
 %     plot(D50,qt_dL_frac(g,:,Qselect,Sselect)/qt_dL_sum(g,:,Qselect,Sselect)*100,'-.','color',clr1(1,:),'linewidth',pl.line);
 %     plot(D50,qt_vR_frac(g,:,Qselect,Sselect)/qt_vR_sum(g,:,Qselect,Sselect)*100,':','color',clr1(1,:),'linewidth',pl.line);
@@ -448,7 +451,6 @@ for a = 1
     
     set(t,'FontSize',pl.fsz2);
     set(l,'FontSize',pl.fsz2);
-    
     
     set(gcf,'renderer','painters');
     print(f1,'-dpng',[output '/FlowOnMars6_SedimentMixtureFlux_QS'],'-r400');

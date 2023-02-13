@@ -1,6 +1,7 @@
 %% Flow on Mars 1 - Hydrological parameters
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Date: 2022-09-07
+% Last update: 2023-02-13
+% Created in Matlab version: R2022b
 
 %% Initialize
 clear variables

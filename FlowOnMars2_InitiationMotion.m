@@ -1,13 +1,14 @@
 %% Flow on Mars 2 - Initiation of Motion
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Date: 2022-09-07
+% Last update: 2023-02-13
+% Created in Matlab version: R2022b
 
 %% Initialize
 clear variables
 close all
 clc
 
-output = 'AGU22';
+output = 'FlowOnMars_exportfig';
 addpath(genpath('Checkout'));
 
 %% Input parameters
@@ -505,9 +506,6 @@ for a = 1
     y = 0.94;
     xd = 10^(log10(D50(1))+( log10(D50(end))-log10(D50(1)) )*0.04);
 end
-
-%% TO DO
-%Min and Max of all graphs should be checked
 
 %% plot Q_mars = Q_earth
 for a = 1
