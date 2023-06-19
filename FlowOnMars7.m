@@ -1,7 +1,6 @@
 %% Flow on Mars 7
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Last update: 2023-02-13
-% Created in Matlab version: R2022b
+% Date: 2022-10-06
 
 %% Initialize
 clear variables
@@ -513,9 +512,9 @@ for a = 1
     leg1 = legend(s1(1),'Mars','Earth','location','east');
 
     t(5) = text(s1(1),min(Q)+(max(Q)-min(Q)),1.5*10^1,'W = 200 m + S = 0.001 m/m + Q = 250-15000 m^3/s   ','HorizontalAlignment', 'right');
-    t(6) = text(s1(2),min(h)+(max(h)-min(h)),1.5*10^1,'W = 200 m + S = 0.001 m/m + h = 0.5-15 m^3/s   ','HorizontalAlignment', 'right');
-    t(7) = text(s1(3),min(u)+(max(u)-min(u)),1.5*10^1,'W = 200 m + S = 0.001 m/m + u = 0.5-6.5 m^3/s   ','HorizontalAlignment', 'right');
-    t(8) = text(s1(4),min(tau)+(max(tau)-min(tau)),1.5*10^1,'W = 200 m + S = 0.001 m/m + \tau = 1-100 m^3/s   ','HorizontalAlignment', 'right');
+    t(6) = text(s1(2),min(h)+(max(h)-min(h)),1.5*10^1,'W = 200 m + S = 0.001 m/m + h = 0.5-15 m   ','HorizontalAlignment', 'right');
+    t(7) = text(s1(3),min(u)+(max(u)-min(u)),1.5*10^1,'W = 200 m + S = 0.001 m/m + u = 0.5-6.5 m/s   ','HorizontalAlignment', 'right');
+    t(8) = text(s1(4),min(tau)+(max(tau)-min(tau)),1.5*10^1,'W = 200 m + S = 0.001 m/m + \tau = 1-100 N/m^2   ','HorizontalAlignment', 'right');
 
     set(s1,'box','on','Layer','top', ...
         'XMinorTick','on','YMinorTick','on', ...

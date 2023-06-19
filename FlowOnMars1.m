@@ -1,7 +1,6 @@
 %% Flow on Mars 1 - Hydrological parameters
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Last update: 2023-02-13
-% Created in Matlab version: R2022b
+% Date: 2022-09-07
 
 %% Initialize
 clear variables
@@ -16,6 +15,7 @@ for a = 1
     Drough = 0.01; %[m] Grain size, only used for roughness
     h = 2:0.5:15; %[m] Water depth
     Q = 500:500:15000; %[m3/s] Discharge
+    Qselect = 4; 
     W = 200; %[m] Channel width
     grav = 1:0.5:12; %[m/s2] Gravitational acceleration
     S = 0.001; %[m/m] Slope
@@ -212,10 +212,10 @@ for a = 1
     t(8) = text(xh,10^(log10(150)+(8-log10(150))*y),' h');
     
     colormap(clr1)
-    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)])
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)]);
     cb.Label.String ='Gravity [m/s^2]';
     cb.Label.FontSize = pl.fsz2;
-    caxis([grav(1) grav(end)])
+    clim([grav(1) grav(end)]);
     
     set(s1,'box','on','Layer','top', ...
         'XMinorTick','off','YMinorTick','off', ...
@@ -321,10 +321,10 @@ for a = 1
     t(8) = text(xh,10^(log10(150)+(8-log10(150))*y),' h');
 
     colormap(clr1)
-    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)])
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)]);
     cb.Label.String ='Gravity [m/s^2]';
     cb.Label.FontSize = pl.fsz2;
-    caxis([grav(1) grav(end)])
+    clim([grav(1) grav(end)]);
 
     set(s2,'box','on','Layer','top', ...
         'XMinorTick','off','YMinorTick','off', ...
@@ -430,10 +430,10 @@ for a = 1
     t(8) = text(xq,10^(log10(150)+(8-log10(150))*y),' h');
     
     colormap(clr1)
-    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)])
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)]);
     cb.Label.String ='Gravity [m/s^2]';
     cb.Label.FontSize = pl.fsz2;
-    caxis([grav(1) grav(end)])
+    clim([grav(1) grav(end)]);
 
     set(s3,'box','on','Layer','top', ...
         'XMinorTick','off','YMinorTick','off', ...
@@ -539,10 +539,10 @@ for a = 1
     t(12) = text(xq,10^(log10(150)+(8-log10(150))*y),' h');
     
     colormap(clr1)
-    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)])
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[grav(1) grav(end)]);
     cb.Label.String ='Gravity [m/s^2]';
     cb.Label.FontSize = pl.fsz2;
-    caxis([grav(1) grav(end)])
+    clim([grav(1) grav(end)]);
     
     set(s4,'box','on','Layer','top', ...
         'XMinorTick','off','YMinorTick','off', ...
@@ -666,10 +666,11 @@ for a = 1
     t(14) = text(xg,10^(log10(150)+(8-log10(150))*y),' h');
     
     colormap(clr3)
-    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[Q(1) Q(end)])
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[Q(1) Q(end)]);
     cb.Label.String ='Discharge [m^3/s]';
     cb.Label.FontSize = pl.fsz2;
-    caxis([Q(1) Q(end)])
+    clim([Q(1) Q(end)]);
+    set(cb,'Ticks',[500 5000 10000 15000]);
 
     set(s5,'box','on','Layer','top', ...
         'XMinorTick','off','YMinorTick','off', ...
@@ -793,10 +794,11 @@ for a = 1
     t(14) = text(xg,10^(log10(150)+(8-log10(150))*y),' h');
     
     colormap(clr2)
-    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[h(1) h(end)])
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[h(1) h(end)]);
     cb.Label.String ='Water depth [m]';
     cb.Label.FontSize = pl.fsz2;
-    caxis([h(1) h(end)])
+    clim([h(1) h(end)]);
+    set(cb,'Ticks',[2 5 10 15]);
     
     set(s6,'box','on','Layer','top', ...
         'XMinorTick','off','YMinorTick','off', ...
@@ -810,6 +812,134 @@ for a = 1
     set(gcf,'renderer','painters');
     print(f6,'-dpng',[output '/FlowOnMars1_gh'],'-r400');
     print(f6,'-dpdf',[output '/FlowOnMars1_gh'],'-r400');
+end
+
+%% plot x=g Q_mars = Q_earth Q=2000
+for a = 1
+    f7 = figure('units','centimeters','PaperUnits','centimeters', ...
+        'PaperPosition',[0 0 pl.width pl.height],'Position',[10 5 pl.width pl.height], ...
+        'PaperSize',[pl.width pl.height],'visible','on');
+    
+    s7(1) = axes('Position',[pl.lmarge 1-pl.tmarge-pl.ht pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,h_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(1) = ylabel('Water depth (h) [m]');
+    axis([grav(1) grav(end) 0 15]);
+    t(1) = text(gM-0.5,0,' Mars','color',clrM,'rotation',90);
+    t(2) = text(gE-0.5,0,' Earth','color',clrE,'rotation',90);
+    t(3) = text(xg,15*y,' a');
+    
+    s7(2) = axes('Position',[pl.lmarge pl.bmarge pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,u_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(2) = xlabel('Gravity (g) [m/s^2]');
+    l(3) = ylabel('Velocity (u) [m/s]');
+    axis([grav(1) grav(end) 0 5]);
+    t(4) = text(xg,5*y,' e');
+    
+    s7(3) = axes('Position',[pl.lmarge+pl.inth+pl.wt 1-pl.tmarge-pl.ht pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,Rw_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(4) = ylabel('Hydraulic radius (R_w) [m]');
+    axis([grav(1) grav(end) 0 15]);
+    t(5) = text(xg,15*y,' b');
+    
+    s7(4) = axes('Position',[pl.lmarge+pl.inth+pl.wt pl.bmarge pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,tau_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(5) = xlabel('Gravity (g) [m/s^2]');
+    l(6) = ylabel('Shear stress (\tau) [N/m^2]');
+    axis([grav(1) grav(end) 0 100]);
+    t(6) = text(xg,100*y,' f');
+    
+    s7(5) = axes('Position',[pl.lmarge+2*pl.inth+2*pl.wt 1-pl.tmarge-pl.ht pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,C_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(7) = ylabel([{'Chezy roughness (C)'};{'[m^{0.5}/s]'}]);
+    axis([grav(1) grav(end) 0 70]);
+    t(7) = text(xg,70*y,' c');
+    
+    s7(6) = axes('Position',[pl.lmarge+2*pl.inth+2*pl.wt pl.bmarge pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,ust_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(8) = xlabel('Gravity (g) [m/s^2]');
+    l(9) = ylabel('Shear velocity (u_*) [m/s]');
+    axis([grav(1) grav(end) 0 0.3]);
+    t(8) = text(xg,0.3*y,' g');
+    
+    s7(7) = axes('Position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge-pl.ht pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[0 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[0 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,Fr_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(10) = ylabel('Froude number (Fr) [-]');
+    axis([grav(1) grav(end) 0 1.20]);
+    plot([grav(1) grav(end)],[1 1],'--','color','k','linewidth',pl.line);
+    t(9) = text(grav(end),0.93,'subcritical ','HorizontalAlignment','right');
+    t(10) = text(grav(end),1.09,'supercritical ','HorizontalAlignment','right');
+    t(11) = text(xg,1.2*y,' d');
+    
+    s7(8) = axes('Position',[pl.lmarge+3*pl.inth+3*pl.wt pl.bmarge pl.wt pl.ht]);
+    hold on
+    plot([gM gM],[1 100000000],'color',clrM,'linewidth',pl.line);
+    plot([gE gE],[1 100000000],'color',clrE,'linewidth',pl.line);
+    for i = Qselect
+        plot(grav,Re_Q(:,i),'color',clr3(i,:),'linewidth',pl.line);
+    end
+    l(11) = xlabel('Gravity (g) [m/s^2]');
+    l(12) = ylabel('Reynolds number (Re) [-]');
+    axis([grav(1) grav(end) 150 10e7]);
+    plot([grav(1) grav(end)],[500 500],'--','color','k','linewidth',pl.line);
+    t(12) = text(grav(end),300,'laminar ','HorizontalAlignment','right');
+    t(13) = text(grav(end),1100,'tubulent ','HorizontalAlignment','right');
+    set(gca,'Yscale','log');
+    t(14) = text(xg,10^(log10(150)+(8-log10(150))*y),' h');
+    
+    colormap(clr3)
+    cb = colorbar('north','position',[pl.lmarge+3*pl.inth+3*pl.wt 1-pl.tmarge+0.015 pl.wt 0.02],'Ticks',[Q(1) Q(end)]);
+    cb.Label.String ='Discharge [m^3/s]';
+    cb.Label.FontSize = pl.fsz2;
+    clim([Q(1) Q(end)]);
+    set(cb,'Ticks',[500 5000 10000 15000]);
+
+    set(s7,'box','on','Layer','top', ...
+        'XMinorTick','off','YMinorTick','off', ...
+        'FontSize',pl.fsz,'LineWidth',pl.line_ax,'TickDir','in','YDir','normal', ...
+        'XColor',[0 0 0],'YColor',[0 0 0],'ZColor',[0 0 0], ...
+        'MinorGridColor',[0 0 0],'GridColor',[0.5 0.5 0.5]);
+    
+    set(t,'FontSize',pl.fsz2);
+    set(l,'FontSize',pl.fsz2);
+    
+    set(gcf,'renderer','painters');
+    print(f7,'-dpng',[output '/FlowOnMars1_gQ_2000m3s'],'-r400');
+    print(f7,'-dpdf',[output '/FlowOnMars1_gQ_2000m3s'],'-r400');
 end
 
 %%

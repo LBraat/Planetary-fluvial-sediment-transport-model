@@ -1,7 +1,6 @@
 %% Flow on Mars 5 - Grain Size Distribution
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Last update: 2023-02-13
-% Created in Matlab version: R2022b
+% Date: 2022-03-04
 
 %% Initialize
 clear variables
@@ -212,7 +211,7 @@ end
 set(gca,'Xscale','log');
 axis([6.3e-7 0.63 0 max(h_test.Values)*1.1]);
 set(gca,'XTick',[1e-10 1e-9 1e-8 1e-7 1e-6 1e-5 1e-4 1e-3 1e-2 1e-1 1e0 1e1 1e10]);
-l(1) = xlabel('Grain size');
+l(1) = xlabel('Grain size [m]');
 l(2) = ylabel('Bin Count');
 title('Random lognormal sample')
 t(1) = text(xd,max(h_test.Values)*1.1*y,' a');

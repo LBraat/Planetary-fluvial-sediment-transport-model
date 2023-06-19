@@ -1,7 +1,6 @@
 %% Flow on Mars 2 - Initiation of Motion
 % Author: Lisanne Braat (lisannebraat@gmail.com)
-% Last update: 2023-02-13
-% Created in Matlab version: R2022b
+% Date: 2022-09-07
 
 %% Initialize
 clear variables
@@ -507,6 +506,9 @@ for a = 1
     xd = 10^(log10(D50(1))+( log10(D50(end))-log10(D50(1)) )*0.04);
 end
 
+%% TO DO
+%Min and Max of all graphs should be checked
+
 %% plot Q_mars = Q_earth
 for a = 1
     close all; clc;
@@ -677,7 +679,7 @@ for a = 1
     end
     
     set(s1,'box','on','Layer','top', ...
-        'XMinorTick','off','YMinorTick','off', ...
+        'XMinorTick','on','YMinorTick','on', ...
         'FontSize',pl.fsz,'LineWidth',pl.line_ax,'TickDir','in','YDir','normal', ...
         'XColor',[0 0 0],'YColor',[0 0 0],'ZColor',[0 0 0], ...
         'MinorGridColor',[0 0 0],'GridColor',[0.5 0.5 0.5]);
@@ -860,7 +862,7 @@ for a = 1
     end
     
     set(s1,'box','on','Layer','top', ...
-        'XMinorTick','off','YMinorTick','off', ...
+        'XMinorTick','on','YMinorTick','on', ...
         'FontSize',pl.fsz,'LineWidth',pl.line_ax,'TickDir','in','YDir','normal', ...
         'XColor',[0 0 0],'YColor',[0 0 0],'ZColor',[0 0 0], ...
         'MinorGridColor',[0 0 0],'GridColor',[0.5 0.5 0.5]);
